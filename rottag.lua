@@ -332,8 +332,8 @@ AllDelay = "Break / Place / HT / Plant / World : **("
                 inline = "true"
             }
             @{
-                name = "]]..GetNameID(FavItem)..[[ in Backpack"
-                value = "]]..(findItem(FavItem))..[["
+                name = ":gem: ]]..GetNameID(FavItem)..[[ in Backpack"
+                value = "]]..(findItem(FavItem))..[[ Items"
                 inline = "true"
             }
             @{

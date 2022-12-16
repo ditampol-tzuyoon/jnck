@@ -136,6 +136,12 @@ end
 
 function odnotice(logger)
 
+    if userdc then
+        Mention = "<@"..userdc..">"
+    else
+        Mention = ""
+    end
+
     local script = [[
         $w = "]]..PingHook..[["
 
@@ -155,6 +161,7 @@ function odnotice(logger)
         $Body = [PSCustomObject]@{
             embeds = $embedArray
             'username' = ']]..getBot().name..[[ | OD2320'
+            'content' = ']]..Mention..[['
         }
 
         Invoke-RestMethod -Uri $w -Body ($Body | ConvertTo-Json -Depth 4) -Method Post -ContentType 'application/json'

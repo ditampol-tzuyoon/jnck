@@ -134,6 +134,37 @@ function ohdtag(logger)
     pipe:close()
 end
 
+function odnotice(logger)
+
+    local script = [[
+        $w = "]]..PingHook..[["
+
+        [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
+
+        [System.Collections.ArrayList]$embedArray = @()
+        $descriptions = ']].. logger ..[['
+        $color       = ']]..math.random(1000000,9999999)..[['
+
+        $embedObject = [PSCustomObject]@{
+            description = $descriptions
+            color       = $color
+        }
+
+        $embedArray.Add($embedObject) | Out-Null
+
+        $Body = [PSCustomObject]@{
+            embeds = $embedArray
+            'username' = ']]..getBot().name..[[ | OD2320'
+        }
+
+        Invoke-RestMethod -Uri $w -Body ($Body | ConvertTo-Json -Depth 4) -Method Post -ContentType 'application/json'
+    ]]
+
+    local pipe = io.popen("powershell -command -", "w")
+    pipe:write(script)
+    pipe:close()
+end
+
 function ohdsay(logger, hookURL, Pings)
 
 if namapack == "crackers" then

@@ -332,8 +332,8 @@ AllDelay = "Break / Place / HT / Plant / World : **("
                 inline = "true"
             }
             @{
-                name = "]]..emot_wl..[[ WL in Backpack"
-                value = "]]..(findItem(242)+(findItem(1796)*100))..[[ WLs"
+                name = "]]..GetNameID(FavItem)..[[ in Backpack"
+                value = "]]..(findItem(FavItem))..[["
                 inline = "true"
             }
             @{

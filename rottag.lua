@@ -249,7 +249,7 @@ end
         targetlv = getBot().level
     end
 
-AllDelay = "Break / Place / HT / Plant / World : **("
+AllDelay = "\n~\nBreak / Place / HT / Plant / World : **("
 ..delaypnb.." / "..delayplace.." / "..delayht.." / "
 ..delayplant.." / "..delayworld..")**"
 

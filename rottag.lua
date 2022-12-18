@@ -99,7 +99,7 @@ end
 
 function ohdtag(logger)
 	
-if getBot().status == "online" then
+if getBot().status ~= "online" then
     Ment = "<@".. userdc ..">"
 else
     Ment = ""

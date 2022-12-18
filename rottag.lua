@@ -98,6 +98,13 @@ AllDelay = "\n~\n"..emot_bot.." "..getBot().name.." (Lv "
 end
 
 function ohdtag(logger)
+	
+if getBot().status == "online" then
+    Ment = "<@".. userdc ..">"
+else
+    Ment = ""
+end
+	
     kalimatku = "\n~\n" ..emot_bot.. " " ..getBot().name.. "\nInfo Bot Silahkan Cek di"
     local script = [[
         $gethook = "]]..MainHook..[["
@@ -106,8 +113,6 @@ function ohdtag(logger)
         [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
         $ambilhook = Invoke-RestMethod -Uri $gethook -Method GET
         $dapatid = $ambilhook.channel_id
-
-        $Mention = '<@]].. userdc ..[[>'
 
         [System.Collections.ArrayList]$embedArray = @()
         $descriptions = ']].. logger ..[[ ]].. kalimatku ..[[ <#' + $dapatid + '>'
@@ -123,7 +128,7 @@ function ohdtag(logger)
         $Body = [PSCustomObject]@{
             embeds = $embedArray
             'username' = ']]..getBot().name..[[|OD2320'
-            'content' = $Mention
+            'content' = ']]..Ment..[['
         }
 
         Invoke-RestMethod -Uri $w -Body ($Body | ConvertTo-Json -Depth 4) -Method Post -ContentType 'application/json'

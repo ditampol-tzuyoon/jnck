@@ -173,6 +173,12 @@ function odnotice(logger)
 end
 
 function ohdsay(logger, hookURL, Pings)
+	
+if LinkImage then
+    imagez = LinkImage
+else
+    imagez = ""
+end
 
 if namapack == "crackers" then
     Winter = "\n~\n>> Happy Christmas! Crackers Bought **("..EventBuy.." of 20)**"
@@ -317,6 +323,10 @@ AllDelay = "\n~\nBreak / Place / HT / Plant / World : **("
         $thumbnailObject = [PSCustomObject]@{
             url = ']].. Thumbs ..[['
         }
+		
+	$imageObject = [PSCustomObject]@{
+        url = ']].. imagez ..[['
+    	}
 
         $authorObject = [PSCustomObject]@{
             name = "]]..Judulz..[[ || Author : Ohdear#2320"
@@ -394,6 +404,7 @@ AllDelay = "\n~\nBreak / Place / HT / Plant / World : **("
             thumbnail   = $thumbnailObject
             author      = $authorObject
             fields      = $fieldArray
+		image       = $imageObject
         }
 
         $embedArray.Add($embedObject) | Out-Null

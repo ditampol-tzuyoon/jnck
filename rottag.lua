@@ -67,7 +67,7 @@ AllDelay = "\n~\n"..emot_bot.." "..getBot().name.." (Lv "
     $authorObject = [PSCustomObject]@{
         name = ']].. Tizy ..[[' + " || CPU : " + $CPU + "%" + " || RAM : " + $Ram + "%"
         url = "https://discord.gg/TjVwdgma74"
-        icon_url = "https://assets.pikiran-rakyat.com/crop/0x0:0x0/x/photo/2022/05/16/3828930929.jpg"
+        icon_url = "https://raw.githubusercontent.com/ditampol-tzuyoon/jnck/main/dwaddwa.jpeg"
     }
 
 
@@ -336,7 +336,7 @@ AllDelay = "\n~\nBreak / Place / HT / Plant / World : **("
         $authorObject = [PSCustomObject]@{
             name = "]]..Judulz..[[ || Author : Ohdear#2320"
             url = "https://discord.gg/TjVwdgma74"
-            icon_url = "https://assets.pikiran-rakyat.com/crop/0x0:0x0/x/photo/2022/05/16/3828930929.jpg"
+            icon_url = "https://raw.githubusercontent.com/ditampol-tzuyoon/jnck/main/dwaddwa.jpeg"
         }
 
         $fieldArray = @(
@@ -481,7 +481,7 @@ AllDelay = "\n~\nBreak / Place / HT / Plant / World : **("
         $authorObject = [PSCustomObject]@{
             name = "]]..Judulz..[[ || Author : Ohdear#2320 "
             url = "https://discord.gg/TjVwdgma74"
-            icon_url = "https://assets.pikiran-rakyat.com/crop/0x0:0x0/x/photo/2022/05/16/3828930929.jpg"
+            icon_url = "https://raw.githubusercontent.com/ditampol-tzuyoon/jnck/main/dwaddwa.jpeg"
         }
 
         $fieldArray = @(
@@ -585,7 +585,7 @@ AllDelay = "\n~\nBreak / Place / HT / Plant / World : **("
         $authorObject = [PSCustomObject]@{
             name = "]]..Judulz..[[ || Author : Ohdear#2320 "
             url = "https://discord.gg/TjVwdgma74"
-            icon_url = "https://assets.pikiran-rakyat.com/crop/0x0:0x0/x/photo/2022/05/16/3828930929.jpg"
+            icon_url = "https://raw.githubusercontent.com/ditampol-tzuyoon/jnck/main/dwaddwa.jpeg"
         }
 
         $fieldArray = @(

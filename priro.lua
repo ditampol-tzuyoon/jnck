@@ -174,6 +174,12 @@ end
 
 function ohdsay(logger, hookURL, Pings)
 	
+if LoopFarm > 0 then
+    Puteran = "\n**>> Loop Farm : "..LoopFarm.."**"
+else
+    Puteran = ""
+end
+	
 if LinkImage then
     imagez = LinkImage
 else
@@ -392,7 +398,7 @@ AllDelay = "\n~\nBreak / Place / HT / Plant / World : **("
 
             @{
                 name = "]]..emot_world..[[ World Info"
-                value = "]]..ShowWorld..[[]]..Winter..[["
+                value = "]]..ShowWorld..[[]]..Puteran..[[]]..Winter..[["
                 inline = "false"
             }
         )

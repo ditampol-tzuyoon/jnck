@@ -272,6 +272,14 @@ AllDelay = "\n~\nBreak / Place / HT / Plant / World : **("
                 Muncul = true
             end
         end
+        for _, v in pairs(WorldSeed) do
+            if v:upper() == WorldSkrg then
+                Muncul = true
+            end
+        end
+        if WorldPack:upper() == WorldSkrg then
+            Muncul = true
+        end
         if WorldAxe:upper() == WorldSkrg then
             Muncul = true
         end

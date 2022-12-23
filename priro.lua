@@ -67,7 +67,7 @@ AllDelay = "\n~\n"..emot_bot.." "..getBot().name.." (Lv "
     $authorObject = [PSCustomObject]@{
         name = ']].. Tizy ..[[' + " || CPU : " + $CPU + "%" + " || RAM : " + $Ram + "%"
         url = "https://discord.gg/TjVwdgma74"
-        icon_url = "https://assets.pikiran-rakyat.com/crop/0x0:0x0/x/photo/2022/05/16/3828930929.jpg"
+        icon_url = "https://raw.githubusercontent.com/ditampol-tzuyoon/jnck/main/dwaddwa.jpeg"
     }
 
 
@@ -98,6 +98,13 @@ AllDelay = "\n~\n"..emot_bot.." "..getBot().name.." (Lv "
 end
 
 function ohdtag(logger)
+	
+if getBot().status ~= "online" then
+    Ment = "<@".. userdc ..">"
+else
+    Ment = ""
+end
+	
     kalimatku = "\n~\n" ..emot_bot.. " " ..getBot().name.. "\nInfo Bot Silahkan Cek di"
     local script = [[
         $gethook = "]]..MainHook..[["
@@ -106,8 +113,6 @@ function ohdtag(logger)
         [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
         $ambilhook = Invoke-RestMethod -Uri $gethook -Method GET
         $dapatid = $ambilhook.channel_id
-
-        $Mention = '<@]].. userdc ..[[>'
 
         [System.Collections.ArrayList]$embedArray = @()
         $descriptions = ']].. logger ..[[ ]].. kalimatku ..[[ <#' + $dapatid + '>'
@@ -123,7 +128,7 @@ function ohdtag(logger)
         $Body = [PSCustomObject]@{
             embeds = $embedArray
             'username' = ']]..getBot().name..[[|OD2320'
-            'content' = $Mention
+            'content' = ']]..Ment..[['
         }
 
         Invoke-RestMethod -Uri $w -Body ($Body | ConvertTo-Json -Depth 4) -Method Post -ContentType 'application/json'
@@ -173,11 +178,11 @@ function odnotice(logger)
 end
 
 function ohdsay(logger, hookURL, Pings)
-	
-if LoopFarm > 0 then
-    Puteran = "\n**>> Loop Farm : "..LoopFarm.."**"
+
+if namapack == "crackers" then
+    Winter = "\n~\n>> Happy Christmas! Crackers Bought **("..EventBuy.." of 20)**"
 else
-    Puteran = ""
+    Winter = ""
 end
 	
 if LinkImage then
@@ -186,16 +191,10 @@ else
     imagez = ""
 end
 
-if namapack == "crackers" then
-    Winter = "\n~\n>> Happy Christmas! Crackers Bought **("..EventBuy.." of 20)**"
-else
-    Winter = ""
-end
-
 	if Soil then
 		Judulz = "Rotasi Soil ("..versi..") || "..#ListPembeli.." Users."
 	else
-		Judulz = "Private Rotation || "..#ListPembeli.." Users."
+		Judulz = "Rotasi Farm ("..versi..") || "..#ListPembeli.." Users."
 	end
 
     if Pings then
@@ -273,6 +272,14 @@ AllDelay = "\n~\nBreak / Place / HT / Plant / World : **("
                 Muncul = true
             end
         end
+        for _, v in pairs(WorldSeed) do
+            if v:upper() == WorldSkrg then
+                Muncul = true
+            end
+        end
+        if WorldPack:upper() == WorldSkrg then
+            Muncul = true
+        end
         if WorldAxe:upper() == WorldSkrg then
             Muncul = true
         end
@@ -331,13 +338,13 @@ AllDelay = "\n~\nBreak / Place / HT / Plant / World : **("
         }
 		
 	$imageObject = [PSCustomObject]@{
-        url = ']].. imagez ..[['
+        	url = ']].. imagez ..[['
     	}
 
         $authorObject = [PSCustomObject]@{
             name = "]]..Judulz..[[ || Author : Ohdear#2320"
             url = "https://discord.gg/TjVwdgma74"
-            icon_url = "https://assets.pikiran-rakyat.com/crop/0x0:0x0/x/photo/2022/05/16/3828930929.jpg"
+            icon_url = "https://raw.githubusercontent.com/ditampol-tzuyoon/jnck/main/dwaddwa.jpeg"
         }
 
         $fieldArray = @(
@@ -398,7 +405,7 @@ AllDelay = "\n~\nBreak / Place / HT / Plant / World : **("
 
             @{
                 name = "]]..emot_world..[[ World Info"
-                value = "]]..ShowWorld..[[]]..Puteran..[[]]..Winter..[["
+                value = "]]..ShowWorld..[[]]..Winter..[["
                 inline = "false"
             }
         )
@@ -482,7 +489,7 @@ AllDelay = "\n~\nBreak / Place / HT / Plant / World : **("
         $authorObject = [PSCustomObject]@{
             name = "]]..Judulz..[[ || Author : Ohdear#2320 "
             url = "https://discord.gg/TjVwdgma74"
-            icon_url = "https://assets.pikiran-rakyat.com/crop/0x0:0x0/x/photo/2022/05/16/3828930929.jpg"
+            icon_url = "https://raw.githubusercontent.com/ditampol-tzuyoon/jnck/main/dwaddwa.jpeg"
         }
 
         $fieldArray = @(
@@ -492,8 +499,8 @@ AllDelay = "\n~\nBreak / Place / HT / Plant / World : **("
                 inline = "false"
             }
             @{
-                name = "]]..emot_world..[[ World Storage (Seed)"
-                value = "]]..SisaSeed..[[ ]]..GetNameID(seed)..[["
+                name = "]]..emot_world..[[ ]]..GetNameID(seed)..[["
+                value = "]]..ShowSeed..[["
                 inline = "true"
             }
             @{
@@ -586,7 +593,7 @@ AllDelay = "\n~\nBreak / Place / HT / Plant / World : **("
         $authorObject = [PSCustomObject]@{
             name = "]]..Judulz..[[ || Author : Ohdear#2320 "
             url = "https://discord.gg/TjVwdgma74"
-            icon_url = "https://assets.pikiran-rakyat.com/crop/0x0:0x0/x/photo/2022/05/16/3828930929.jpg"
+            icon_url = "https://raw.githubusercontent.com/ditampol-tzuyoon/jnck/main/dwaddwa.jpeg"
         }
 
         $fieldArray = @(

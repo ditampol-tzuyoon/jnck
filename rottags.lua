@@ -105,6 +105,14 @@ else
     Ment = ""
 end
 	
+    if getBot().status == "online" then
+        statzBot = ":green_circle:"
+        Warna = 7405312
+    else
+        statzBot = ":red_circle:"
+        Warna = 16711680
+    end
+	
     kalimatku = "\n~\n" ..emot_bot.. " " ..getBot().name.. "\nInfo Bot Silahkan Cek di"
     local script = [[
         $gethook = "]]..MainHook..[["
@@ -116,7 +124,7 @@ end
 
         [System.Collections.ArrayList]$embedArray = @()
         $descriptions = ']].. logger ..[[ ]].. kalimatku ..[[ <#' + $dapatid + '>'
-        $color       = ']]..math.random(1000000,9999999)..[['
+        $color       = ']]..Warna..[['
 
         $embedObject = [PSCustomObject]@{
             description = $descriptions
@@ -140,6 +148,14 @@ end
 end
 
 function odnotice(logger)
+	
+    if getBot().status == "online" then
+        statzBot = ":green_circle:"
+        Warna = 7405312
+    else
+        statzBot = ":red_circle:"
+        Warna = 16711680
+    end
 
     if userdc then
         Mention = "<@"..userdc..">"
@@ -154,7 +170,7 @@ function odnotice(logger)
 
         [System.Collections.ArrayList]$embedArray = @()
         $descriptions = ']].. logger ..[['
-        $color       = ']]..math.random(1000000,9999999)..[['
+        $color       = ']]..Warna..[['
 
         $embedObject = [PSCustomObject]@{
             description = $descriptions
@@ -244,9 +260,12 @@ end
 
     if getBot().status == "online" then
         statzBot = ":green_circle:"
+        Warna = 7405312
     else
         statzBot = ":red_circle:"
+        Warna = 16711680
     end
+
 
     if findClothes(98) then
         PickBotz = ":green_circle: **Pickaxe** (x"..findItem(98)..")"
@@ -325,7 +344,7 @@ AllDelay = "\n~\nBreak / Place / HT / Plant / World : **("
 
         [System.Collections.ArrayList]$embedArray = @()
         $descriptions = ']].. logger ..[[ ]]..TempOff..[[ ]]..AllDelay..[['
-        $color       = ']]..math.random(1000000,9999999)..[['
+        $color       = ']]..Warna..[['
 
 
         $footerObject = [PSCustomObject]@{
@@ -474,7 +493,7 @@ AllDelay = "\n~\nBreak / Place / HT / Plant / World : **("
 
         [System.Collections.ArrayList]$embedArray = @()
         $descriptions = ']].. logger ..[['
-        $color       = ']]..math.random(1000000,9999999)..[['
+        $color       = ']]..Warna..[['
 
 
         $footerObject = [PSCustomObject]@{
@@ -578,7 +597,7 @@ AllDelay = "\n~\nBreak / Place / HT / Plant / World : **("
 
         [System.Collections.ArrayList]$embedArray = @()
         $descriptions = ']].. logger ..[['
-        $color       = ']]..math.random(1000000,9999999)..[['
+        $color       = ']]..Warna..[['
 
 
         $footerObject = [PSCustomObject]@{

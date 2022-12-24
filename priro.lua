@@ -219,7 +219,7 @@ end
         ingfo = ""
     end
 
-    MenitRdp = (os.date("*t", os.time()).min)
+    MenitRdp = (os.date("*t", os.time()).min) + 0
     JamRdp = (os.date("*t", os.time()).hour) + Selisih
 
     if MenitRdp < 10 then

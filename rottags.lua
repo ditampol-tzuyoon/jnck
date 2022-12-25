@@ -113,17 +113,20 @@ end
         Warna = 16711680
     end
 	
-    kalimatku = "\n~\n" ..emot_bot.. " " ..getBot().name.. "\nInfo Bot Silahkan Cek di"
+    kalimatku = "\nMore Info : "
     local script = [[
         $gethook = "]]..MainHook..[["
         $w = "]]..PingHook..[["
 
         [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
         $ambilhook = Invoke-RestMethod -Uri $gethook -Method GET
-        $dapatid = $ambilhook.channel_id
+        $chid = $ambilhook.channel_id
+        $guid = $ambilhook.guild_id
+        $hukid = "]]..HookID..[["
+        $Morez = "https://discord.com/channels/" + $guid + "/" + $chid + "/" + $hukid
 
         [System.Collections.ArrayList]$embedArray = @()
-        $descriptions = ']].. logger ..[[ ]].. kalimatku ..[[ <#' + $dapatid + '>'
+        $descriptions = ']].. logger ..[[ ]].. kalimatku ..[[' + $Morez
         $color       = ']]..Warna..[['
 
         $embedObject = [PSCustomObject]@{

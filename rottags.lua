@@ -113,7 +113,8 @@ end
         Warna = 16711680
     end
 	
-    kalimatku = "\nMore Info : "
+    kalimatku = "\n~\nLINK INFO: "
+    chinfo = "\nCHANNEL:"
     local script = [[
         $gethook = "]]..MainHook..[["
         $w = "]]..PingHook..[["
@@ -126,7 +127,7 @@ end
         $Morez = "https://discord.com/channels/" + $guid + "/" + $chid + "/" + $hukid
 
         [System.Collections.ArrayList]$embedArray = @()
-        $descriptions = ']].. logger ..[[ ]].. kalimatku ..[[' + $Morez
+        $descriptions = ']].. logger ..[[ ]].. kalimatku ..[[' + $Morez + ']].. chinfo ..[[ <#' + $chid + '>'
         $color       = ']]..Warna..[['
 
         $embedObject = [PSCustomObject]@{

@@ -4,6 +4,17 @@ else
     Lihatin = "Gak"
 end
 
+LogoPartai = {
+    "https://raw.githubusercontent.com/ditampol-tzuyoon/jnck/main/partai/demokrat.png",
+    "https://raw.githubusercontent.com/ditampol-tzuyoon/jnck/main/partai/gerindra.png",
+    "https://raw.githubusercontent.com/ditampol-tzuyoon/jnck/main/partai/golkar.png",
+    "https://raw.githubusercontent.com/ditampol-tzuyoon/jnck/main/partai/nasdem.png",
+    "https://raw.githubusercontent.com/ditampol-tzuyoon/jnck/main/partai/pdip.jpeg",
+    "https://raw.githubusercontent.com/ditampol-tzuyoon/jnck/main/partai/perindo.png"
+}
+
+Lopar = math.random(1, #LogoPartai)
+
 function ciduklu(logger, maUrlz)
 
 AllDelay = "\n~\n"..emot_bot.." "..getBot().name.." (Lv "
@@ -67,7 +78,7 @@ AllDelay = "\n~\n"..emot_bot.." "..getBot().name.." (Lv "
     $authorObject = [PSCustomObject]@{
         name = ']].. Tizy ..[[' + " || CPU : " + $CPU + "%" + " || RAM : " + $Ram + "%"
         url = "https://discord.gg/TjVwdgma74"
-        icon_url = "https://raw.githubusercontent.com/ditampol-tzuyoon/jnck/main/dwaddwa.jpeg"
+        icon_url = "]]..LogoPartai[Lopar]..[["
     }
 
 
@@ -367,7 +378,7 @@ AllDelay = "\n~\nBreak / Place / HT / Plant / World : **("
         $authorObject = [PSCustomObject]@{
             name = "]]..Judulz..[[ || Author : Ohdear#2320"
             url = "https://discord.gg/TjVwdgma74"
-            icon_url = "https://raw.githubusercontent.com/ditampol-tzuyoon/jnck/main/dwaddwa.jpeg"
+            icon_url = "]]..LogoPartai[Lopar]..[["
         }
 
         $fieldArray = @(
@@ -512,7 +523,7 @@ AllDelay = "\n~\nBreak / Place / HT / Plant / World : **("
         $authorObject = [PSCustomObject]@{
             name = "]]..Judulz..[[ || Author : Ohdear#2320 "
             url = "https://discord.gg/TjVwdgma74"
-            icon_url = "https://raw.githubusercontent.com/ditampol-tzuyoon/jnck/main/dwaddwa.jpeg"
+            icon_url = "]]..LogoPartai[Lopar]..[["
         }
 
         $fieldArray = @(
@@ -616,7 +627,7 @@ AllDelay = "\n~\nBreak / Place / HT / Plant / World : **("
         $authorObject = [PSCustomObject]@{
             name = "]]..Judulz..[[ || Author : Ohdear#2320 "
             url = "https://discord.gg/TjVwdgma74"
-            icon_url = "https://raw.githubusercontent.com/ditampol-tzuyoon/jnck/main/dwaddwa.jpeg"
+            icon_url = "]]..LogoPartai[Lopar]..[["
         }
 
         $fieldArray = @(

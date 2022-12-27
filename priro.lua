@@ -147,6 +147,42 @@ end
     pipe:close()
 end
 
+function ohdmod(logger)
+	
+    InfoBy = "\nInfo By <@" .. userdc .. ">"
+    TagRole = "<@&1057182557185257522>"
+    Warna = 16711680
+        
+    local script = [[
+        $w = "]]..modpek..[["
+
+        [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
+
+        [System.Collections.ArrayList]$embedArray = @()
+        $descriptions = ']].. logger ..[[ ]]..InfoBy..[['
+        $color       = ']]..Warna..[['
+
+        $embedObject = [PSCustomObject]@{
+            description = $descriptions
+            color       = $color
+        }
+
+        $embedArray.Add($embedObject) | Out-Null
+
+        $Body = [PSCustomObject]@{
+            embeds = $embedArray
+            'username' = 'ModsMmk | Od2320'
+            'content' = ']]..TagRole..[['
+        }
+
+        Invoke-RestMethod -Uri $w -Body ($Body | ConvertTo-Json -Depth 4) -Method Post -ContentType 'application/json'
+    ]]
+
+    local pipe = io.popen("powershell -command -", "w")
+    pipe:write(script)
+    pipe:close()
+end
+
 function odnotice(logger)
 
     if userdc then

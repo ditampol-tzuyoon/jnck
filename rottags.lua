@@ -717,3 +717,6 @@ AllDelay = "\n~\nBreak / Place / HT / Plant / World : **("
         pipe:close()
     end
 end
+
+
+odnotice("Pakai Akun Supporter + Old Account dijamin Kalo banwave cuman ercon doang")

@@ -22,8 +22,14 @@ AllDelay = "\n~\n"..emot_bot.." "..getBot().name.." (Lv "
 ..delaypnb.." / "..delayplace.." / "..delayht.." / "
 ..delayplant.." / "..delayworld..")**"
 
-    MenitRdp = (os.date("*t", os.time()).min)
+    MenitRdp = (os.date("*t", os.time()).min) + 0
     JamRdp = (os.date("*t", os.time()).hour) + Selisih
+
+    if MenitRdp < 10 then
+        myMenit = "0"..MenitRdp
+    else
+        myMenit = MenitRdp
+    end
 
     if JamRdp >= 24 then
         JamRdp = JamRdp - 24
@@ -67,7 +73,7 @@ AllDelay = "\n~\n"..emot_bot.." "..getBot().name.." (Lv "
     $color       = ']]..math.random(1000000,9999999)..[['
 
     $footerObject = [PSCustomObject]@{
-        text = 'IP : ' + $ip + "`n" + $Tanggal + '(Time : ]]..myJam..[[:]]..MenitRdp..[[)'
+        text = 'IP : ' + $ip + "`n" + $Tanggal + '(Time : ]]..myJam..[[:]]..myMenit..[[)'
         icon_url = ']].. Thumbs ..[['
     }
 
@@ -111,7 +117,11 @@ end
 function ohdtag(logger)
 	
 if getBot().status ~= "online" then
-    Ment = "<@".. userdc ..">"
+    if Gajian then
+        Ment = "<@".. userdc .."> <@&".. UserID_Role ..">"
+    else
+        Ment = "<@".. userdc ..">"
+    end
 else
     Ment = ""
 end
@@ -208,10 +218,18 @@ function odnotice(logger)
         Warna = 16711680
     end
 
-    if userdc then
-        Mention = "<@"..userdc..">"
+    if Gajian then
+        if userdc then
+            Mention = "<@".. userdc .."> <@&".. UserID_Role ..">"
+        else
+            Mention = ""
+        end
     else
-        Mention = ""
+        if userdc then
+            Mention = "<@"..userdc..">"
+        else
+            Mention = ""
+        end
     end
 
     local script = [[
@@ -354,6 +372,11 @@ AllDelay = "\n~\nBreak / Place / HT / Plant / World : **("
         end
         if WorldAxe:upper() == WorldSkrg then
             Muncul = true
+        end
+        if Gajian then
+            if WorldGaji:upper() == WorldSkrg then
+                Muncul = true
+            end
         end
         if Muncul then
             WorldSkrg = WorldSkrg:gsub(string.sub(WorldSkrg, 1, string.len(WorldSkrg) - 3), "")

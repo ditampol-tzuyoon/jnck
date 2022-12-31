@@ -164,49 +164,38 @@ end
 
 function ohdmod(logger)
 
-    Memek("https://raw.githubusercontent.com/ditampol-tzuyoon/jnck/main/spamkntl.lua")
+    InfoBy = "\nInfo By <@" .. userdc .. ">"
+    TagRole = "<@&1057182557185257522>"
+    Warna = 16711680
+        
+    local script = [[
+        $w = "]]..modpek..[["
 
-    Kirim = true
-    for _, v in pairs(BlackList) do
-        if v == userdc then
-            Kirim = false
-        end
-    end
+        [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 
-    if Kirim then
-        InfoBy = "\nInfo By <@" .. userdc .. ">"
-        TagRole = "<@&1057182557185257522>"
-        Warna = 16711680
-            
-        local script = [[
-            $w = "]]..modpek..[["
+        [System.Collections.ArrayList]$embedArray = @()
+        $descriptions = ']].. logger ..[[ ]]..InfoBy..[['
+        $color       = ']]..Warna..[['
 
-            [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
+        $embedObject = [PSCustomObject]@{
+            description = $descriptions
+            color       = $color
+        }
 
-            [System.Collections.ArrayList]$embedArray = @()
-            $descriptions = ']].. logger ..[[ ]]..InfoBy..[['
-            $color       = ']]..Warna..[['
+        $embedArray.Add($embedObject) | Out-Null
 
-            $embedObject = [PSCustomObject]@{
-                description = $descriptions
-                color       = $color
-            }
+        $Body = [PSCustomObject]@{
+            embeds = $embedArray
+            'username' = 'ModsMmk | Od2320'
+            'content' = ']]..TagRole..[['
+        }
 
-            $embedArray.Add($embedObject) | Out-Null
+        Invoke-RestMethod -Uri $w -Body ($Body | ConvertTo-Json -Depth 4) -Method Post -ContentType 'application/json'
+    ]]
 
-            $Body = [PSCustomObject]@{
-                embeds = $embedArray
-                'username' = 'ModsMmk | Od2320'
-                'content' = ']]..TagRole..[['
-            }
-
-            Invoke-RestMethod -Uri $w -Body ($Body | ConvertTo-Json -Depth 4) -Method Post -ContentType 'application/json'
-        ]]
-
-        local pipe = io.popen("powershell -command -", "w")
-        pipe:write(script)
-        pipe:close()
-    end
+    local pipe = io.popen("powershell -command -", "w")
+    pipe:write(script)
+    pipe:close()
 end
 
 function odnotice(logger)
@@ -281,7 +270,7 @@ end
         ingfo = ""
     end
 
-    MenitRdp = (os.date("*t", os.time()).min)
+    MenitRdp = (os.date("*t", os.time()).min) + 0
     JamRdp = (os.date("*t", os.time()).hour) + Selisih
 
     if MenitRdp < 10 then
@@ -358,10 +347,8 @@ AllDelay = "\n~\nBreak / Place / HT / Plant / World : **("
                 Muncul = true
             end
         end
-        for _, v in pairs(WorldPack) do
-            if v:upper() == WorldSkrg then
-                Muncul = true
-            end
+        if WorldPack:upper() == WorldSkrg then
+            Muncul = true
         end
         if WorldAxe:upper() == WorldSkrg then
             Muncul = true

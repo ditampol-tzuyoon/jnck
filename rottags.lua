@@ -371,6 +371,11 @@ AllDelay = "\n~\nBreak / Place / HT / Plant / World : **("
         if WorldAxe:upper() == WorldSkrg then
             Muncul = true
         end
+        if Gajian then
+            if WorldGaji:upper() == WorldSkrg then
+                Muncul = true
+            end
+        end
         if Muncul then
             WorldSkrg = WorldSkrg:gsub(string.sub(WorldSkrg, 1, string.len(WorldSkrg) - 3), "")
         end

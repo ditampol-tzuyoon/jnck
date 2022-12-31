@@ -347,8 +347,10 @@ AllDelay = "\n~\nBreak / Place / HT / Plant / World : **("
                 Muncul = true
             end
         end
-        if WorldPack:upper() == WorldSkrg then
-            Muncul = true
+        for _, v in pairs(WorldPack) do
+            if v:upper() == WorldSkrg then
+                Muncul = true
+            end
         end
         if WorldAxe:upper() == WorldSkrg then
             Muncul = true

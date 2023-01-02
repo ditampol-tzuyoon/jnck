@@ -262,6 +262,59 @@ function odnotice(logger)
     pipe:close()
 end
 
+function odplant(logger)
+	
+    Warna = 7405312
+    Banteng = math.random(1, #LogoPartai)
+
+    SendPlant = PlantHook.."/messages/"..PlantMsg
+
+    local script = [[
+        $w = "]]..SendPlant..[["
+
+        [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
+
+        [System.Collections.ArrayList]$embedArray = @()
+        $descriptions = ']].. logger ..[['
+        $color       = ']]..Warna..[['
+
+        $authorObject = [PSCustomObject]@{
+            name = "Continue Plant || Author : Ohdear#2320"
+            url = "https://discord.gg/TjVwdgma74"
+            icon_url = "]]..LogoPartai[Banteng]..[["
+        }
+
+        $fieldArray = @(
+
+            @{
+                name = "Planting World"
+                value = "]]..IngfoPlant()..[["
+                inline = "false"
+            }
+        )
+
+        $embedObject = [PSCustomObject]@{
+            description = $descriptions
+            color       = $color
+            author      = $authorObject
+            fields      = $fieldArray
+        }
+
+        $embedArray.Add($embedObject) | Out-Null
+
+        $Body = [PSCustomObject]@{
+            embeds = $embedArray
+            'username' = ']]..getBot().name..[[ | OD2320'
+        }
+
+        Invoke-RestMethod -Uri $w -Body ($Body | ConvertTo-Json -Depth 4) -Method Post -ContentType 'application/json'
+    ]]
+
+    local pipe = io.popen("powershell -command -", "w")
+    pipe:write(script)
+    pipe:close()
+end
+
 function ohdsay(logger, hookURL, Pings)
 
 if namapack == "crackers" then

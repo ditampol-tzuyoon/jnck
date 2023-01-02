@@ -117,7 +117,7 @@ end
 function ohdtag(logger)
 	
 if getBot().status ~= "online" then
-    if Gajian then
+    if Jastip then
         Ment = "<@".. userdc .."> <@&".. UserID_Role ..">"
     else
         Ment = "<@".. userdc ..">"
@@ -426,7 +426,7 @@ AllDelay = "\n~\nBreak / Place / HT / Plant / World : **("
         if WorldAxe:upper() == WorldSkrg then
             Muncul = true
         end
-        if Gajian then
+        if Jastip then
             if WorldGaji:upper() == WorldSkrg then
                 Muncul = true
             end

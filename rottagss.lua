@@ -4,6 +4,10 @@ else
     Lihatin = "Gak"
 end
 
+if Jastip then
+	Gajian = true
+end
+
 LogoPartai = {
     "https://raw.githubusercontent.com/ditampol-tzuyoon/jnck/main/partai/demokrat.png",
     "https://raw.githubusercontent.com/ditampol-tzuyoon/jnck/main/partai/gerindra.png",

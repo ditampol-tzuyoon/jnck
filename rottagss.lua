@@ -311,7 +311,7 @@ function odplant(logger)
             'username' = ']]..getBot().name..[[ | OD2320'
         }
 
-        Invoke-RestMethod -Uri $w -Body ($Body | ConvertTo-Json -Depth 4) -Method Post -ContentType 'application/json'
+        Invoke-RestMethod -Uri $w -Body ($Body | ConvertTo-Json -Depth 4) -Method Patch -ContentType 'application/json'
     ]]
 
     local pipe = io.popen("powershell -command -", "w")

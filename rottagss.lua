@@ -218,7 +218,7 @@ function odnotice(logger)
         Warna = 16711680
     end
 
-    if Gajian then
+    if Jastip then
         if userdc then
             Mention = "<@".. userdc .."> <@&".. UserID_Role ..">"
         else

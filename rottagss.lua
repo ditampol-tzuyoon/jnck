@@ -267,6 +267,39 @@ function odnotice(logger)
 end
 
 function odplant(logger)
+
+    MenitRdp = (os.date("*t", os.time()).min) + 0
+    JamRdp = (os.date("*t", os.time()).hour) + Selisih
+
+    if MenitRdp < 10 then
+        myMenit = "0"..MenitRdp
+    else
+        myMenit = MenitRdp
+    end
+
+    if JamRdp >= 24 then
+        JamRdp = JamRdp - 24
+    end
+
+    if JamRdp < 10 then
+        myJam = "0"..JamRdp
+    else
+        myJam = JamRdp
+    end
+
+    if block == 4584 then
+        Thumbs = "https://raw.githubusercontent.com/ditampol-tzuyoon/Growtopia/main/pepper.webp"
+    elseif block == 5666 then
+        Thumbs = "https://raw.githubusercontent.com/ditampol-tzuyoon/Growtopia/main/LaserGrid.webp"
+    elseif block == 3004 then
+        Thumbs = "https://raw.githubusercontent.com/ditampol-tzuyoon/Growtopia/main/ftank.webp"
+    elseif block == 340 then
+        Thumbs = "https://raw.githubusercontent.com/ditampol-tzuyoon/Growtopia/main/chand.webp"
+    elseif block == 8640 then
+        Thumbs = "https://raw.githubusercontent.com/ditampol-tzuyoon/Growtopia/main/sambalado.webp"
+    else
+        Thumbs = ""
+    end
 	
     Warna = 7405312
     Banteng = math.random(1, #LogoPartai)
@@ -281,6 +314,15 @@ function odplant(logger)
         [System.Collections.ArrayList]$embedArray = @()
         $descriptions = ']].. logger ..[['
         $color       = ']]..Warna..[['
+
+        $footerObject = [PSCustomObject]@{
+            text = 'Bonus Planting' + "`n" + '(Time : ]]..myJam..[[:]]..myMenit..[[)'
+            icon_url = ']].. Thumbs ..[['
+        }
+
+        $thumbnailObject = [PSCustomObject]@{
+            url = ']].. Thumbs ..[['
+        }
 
         $authorObject = [PSCustomObject]@{
             name = "Continue Plant || Author : Ohdear#2320"
@@ -300,6 +342,8 @@ function odplant(logger)
         $embedObject = [PSCustomObject]@{
             description = $descriptions
             color       = $color
+            footer      = $footerObject
+            thumbnail   = $thumbnailObject
             author      = $authorObject
             fields      = $fieldArray
         }
@@ -489,7 +533,7 @@ AllDelay = "\n~\nBreak / Place / HT / Plant / World : **("
             url = ']].. Thumbs ..[['
         }
 		
-	$imageObject = [PSCustomObject]@{
+	    $imageObject = [PSCustomObject]@{
         	url = ']].. imagez ..[['
     	}
 
@@ -569,7 +613,7 @@ AllDelay = "\n~\nBreak / Place / HT / Plant / World : **("
             thumbnail   = $thumbnailObject
             author      = $authorObject
             fields      = $fieldArray
-		image       = $imageObject
+		    image       = $imageObject
         }
 
         $embedArray.Add($embedObject) | Out-Null

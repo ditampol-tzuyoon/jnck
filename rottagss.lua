@@ -300,7 +300,8 @@ function odplant(logger)
     else
         Thumbs = ""
     end
-	
+
+	TanamWorld = "Planting ("..nPlant.." of "..#WorldPlant.." Worlds)"
     Warna = 7405312
     Banteng = math.random(1, #LogoPartai)
 
@@ -333,7 +334,7 @@ function odplant(logger)
         $fieldArray = @(
 
             @{
-                name = "Planting World"
+                name = "]]..TanamWorld..[["
                 value = "]]..IngfoPlant()..[["
                 inline = "false"
             }

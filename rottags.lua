@@ -610,7 +610,6 @@ AllDelay = "\n~\nBreak / Place / HT / Plant / World : **("
             thumbnail   = $thumbnailObject
             author      = $authorObject
             fields      = $fieldArray
-		    image       = $imageObject
         }
 
         $embedArray.Add($embedObject) | Out-Null

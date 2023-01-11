@@ -349,9 +349,6 @@ AllDelay = "\n~\nBreak / Place / HT / Plant / World : **("
             url = ']].. Thumbs ..[['
         }
 		
-	$imageObject = [PSCustomObject]@{
-        	url = ']].. imagez ..[['
-    	}
 
         $authorObject = [PSCustomObject]@{
             name = "]]..Judulz..[[ || Author : Ohdear#2320"
@@ -429,7 +426,6 @@ AllDelay = "\n~\nBreak / Place / HT / Plant / World : **("
             thumbnail   = $thumbnailObject
             author      = $authorObject
             fields      = $fieldArray
-		image       = $imageObject
         }
 
         $embedArray.Add($embedObject) | Out-Null

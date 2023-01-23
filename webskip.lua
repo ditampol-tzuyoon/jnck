@@ -426,5 +426,64 @@ AllDelay = "\n~\nBreak / Place / HT / Plant / World : **("
         local pipe = io.popen("powershell -command -", "w")
         pipe:write(script)
         pipe:close()
+
+    elseif hookURL == WebhookPNB then
+        if HookIDPnb ~= "XXX" then
+            URLWeb = hookURL.."/messages/"..HookIDPnb
+            methodz = "Patch"
+        else
+            URLWeb = hookURL
+            methodz = "Post"
+        end
+        local script = [[
+        $w = "]]..URLWeb..[["
+        [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
+
+        [System.Collections.ArrayList]$embedArray = @()
+        $descriptions = ']].. logger ..[['
+        $color       = ']]..Warna..[['
+        $footerObject = [PSCustomObject]@{
+            text = 'Rotation Farm by Ohdear#2320' + "`n" + '(Time : ]]..myJam..[[:]]..myMenit..[[)'
+            icon_url = ']].. Thumbs ..[['
+        }
+        $thumbnailObject = [PSCustomObject]@{
+            url = ']].. Thumbs ..[['
+        }
+        $authorObject = [PSCustomObject]@{
+            name = "]]..Judulz..[[ || Author : Ohdear#2320 "
+            url = "https://discord.gg/TjVwdgma74"
+            icon_url = "]]..LogoPartai[Lopar]..[["
+        }
+        $fieldArray = @(
+            @{
+                name = "]]..emot_bot..[[ Bot Name"
+                value = "]]..getBot().name..[["
+                inline = "false"
+            }
+            @{
+                name = "]]..emot_gems..[[ Gems PNB di Other World"
+                value = "]]..ShowPNB..[["
+                inline = "true"
+            }
+        )
+        $embedObject = [PSCustomObject]@{
+            description = $descriptions
+            color       = $color
+            footer      = $footerObject
+            thumbnail   = $thumbnailObject
+            author      = $authorObject
+            fields      = $fieldArray
+        }
+        $embedArray.Add($embedObject) | Out-Null
+        $Body = [PSCustomObject]@{
+            embeds = $embedArray
+            'username' = ']]..getBot().name..[[|OD2320'
+            'content' = $Mention
+        }
+        Invoke-RestMethod -Uri $w -Body ($Body | ConvertTo-Json -Depth 4) -Method ]]..methodz..[[ -ContentType 'application/json'
+        ]]
+        local pipe = io.popen("powershell -command -", "w")
+        pipe:write(script)
+        pipe:close()
     end
 end

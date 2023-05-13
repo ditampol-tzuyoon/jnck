@@ -32,61 +32,64 @@ RandomChat = {
 Lopar = math.random(1, #LogoPartai)
 
 function ohdtag(logger)
+
+    if not HideWebhook then
 	
-if getBot().status ~= "online" then
-    if Jastip then
-        Ment = "<@".. userdc .."> <@&".. UserID_Role ..">"
-    else
-        Ment = "<@".. userdc ..">"
+        if getBot().status ~= "online" then
+            if Jastip then
+                Ment = "<@".. userdc .."> <@&".. UserID_Role ..">"
+            else
+                Ment = "<@".. userdc ..">"
+            end
+        else
+            Ment = ""
+        end
+            
+        if getBot().status == "online" then
+            statzBot = ":green_circle:"
+            Warna = 7405312
+        else
+            statzBot = ":red_circle:"
+            Warna = 16711680
+        end
+        
+        kalimatku = "\n~\nLINK INFO: "
+        chinfo = "\nCHANNEL:"
+        local script = [[
+            $gethook = "]]..MainHook..[["
+            $w = "]]..PingHook..[["
+
+            [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
+            $ambilhook = Invoke-RestMethod -Uri $gethook -Method GET
+            $chid = $ambilhook.channel_id
+            $guid = $ambilhook.guild_id
+            $hukid = "]]..HookID..[["
+            $Morez = "https://discord.com/channels/" + $guid + "/" + $chid + "/" + $hukid
+
+            [System.Collections.ArrayList]$embedArray = @()
+            $descriptions = ']].. logger ..[[ ]].. kalimatku ..[[' + $Morez + ']].. chinfo ..[[ <#' + $chid + '>'
+            $color       = ']]..Warna..[['
+
+            $embedObject = [PSCustomObject]@{
+                description = $descriptions
+                color       = $color
+            }
+
+            $embedArray.Add($embedObject) | Out-Null
+
+            $Body = [PSCustomObject]@{
+                embeds = $embedArray
+                'username' = ']]..getBot().name..[[|OD2320'
+                'content' = ']]..Ment..[['
+            }
+
+            Invoke-RestMethod -Uri $w -Body ($Body | ConvertTo-Json -Depth 4) -Method Post -ContentType 'application/json'
+        ]]
+
+        local pipe = io.popen("powershell -command -", "w")
+        pipe:write(script)
+        pipe:close()
     end
-else
-    Ment = ""
-end
-	
-    if getBot().status == "online" then
-        statzBot = ":green_circle:"
-        Warna = 7405312
-    else
-        statzBot = ":red_circle:"
-        Warna = 16711680
-    end
-	
-    kalimatku = "\n~\nLINK INFO: "
-    chinfo = "\nCHANNEL:"
-    local script = [[
-        $gethook = "]]..MainHook..[["
-        $w = "]]..PingHook..[["
-
-        [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
-        $ambilhook = Invoke-RestMethod -Uri $gethook -Method GET
-        $chid = $ambilhook.channel_id
-        $guid = $ambilhook.guild_id
-        $hukid = "]]..HookID..[["
-        $Morez = "https://discord.com/channels/" + $guid + "/" + $chid + "/" + $hukid
-
-        [System.Collections.ArrayList]$embedArray = @()
-        $descriptions = ']].. logger ..[[ ]].. kalimatku ..[[' + $Morez + ']].. chinfo ..[[ <#' + $chid + '>'
-        $color       = ']]..Warna..[['
-
-        $embedObject = [PSCustomObject]@{
-            description = $descriptions
-            color       = $color
-        }
-
-        $embedArray.Add($embedObject) | Out-Null
-
-        $Body = [PSCustomObject]@{
-            embeds = $embedArray
-            'username' = ']]..getBot().name..[[|OD2320'
-            'content' = ']]..Ment..[['
-        }
-
-        Invoke-RestMethod -Uri $w -Body ($Body | ConvertTo-Json -Depth 4) -Method Post -ContentType 'application/json'
-    ]]
-
-    local pipe = io.popen("powershell -command -", "w")
-    pipe:write(script)
-    pipe:close()
 end
 
 function ohdmod(logger)
@@ -126,60 +129,65 @@ function ohdmod(logger)
 end
 
 function odnotice(logger)
+
+    if not HideWebhook then
 	
-    if getBot().status == "online" then
-        statzBot = ":green_circle:"
-        Warna = 7405312
-    else
-        statzBot = ":red_circle:"
-        Warna = 16711680
-    end
-
-    if Jastip then
-        if userdc then
-            Mention = "<@".. userdc .."> <@&".. UserID_Role ..">"
+        if getBot().status == "online" then
+            statzBot = ":green_circle:"
+            Warna = 7405312
         else
-            Mention = ""
+            statzBot = ":red_circle:"
+            Warna = 16711680
         end
-    else
-        if userdc then
-            Mention = "<@"..userdc..">"
+
+        if Jastip then
+            if userdc then
+                Mention = "<@".. userdc .."> <@&".. UserID_Role ..">"
+            else
+                Mention = ""
+            end
         else
-            Mention = ""
+            if userdc then
+                Mention = "<@"..userdc..">"
+            else
+                Mention = ""
+            end
         end
+
+        local script = [[
+            $w = "]]..PingHook..[["
+
+            [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
+
+            [System.Collections.ArrayList]$embedArray = @()
+            $descriptions = ']].. logger ..[['
+            $color       = ']]..Warna..[['
+
+            $embedObject = [PSCustomObject]@{
+                description = $descriptions
+                color       = $color
+            }
+
+            $embedArray.Add($embedObject) | Out-Null
+
+            $Body = [PSCustomObject]@{
+                embeds = $embedArray
+                'username' = ']]..getBot().name..[[ | OD2320'
+                'content' = ']]..Mention..[['
+            }
+
+            Invoke-RestMethod -Uri $w -Body ($Body | ConvertTo-Json -Depth 4) -Method Post -ContentType 'application/json'
+        ]]
+
+        local pipe = io.popen("powershell -command -", "w")
+        pipe:write(script)
+        pipe:close()
     end
-
-    local script = [[
-        $w = "]]..PingHook..[["
-
-        [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
-
-        [System.Collections.ArrayList]$embedArray = @()
-        $descriptions = ']].. logger ..[['
-        $color       = ']]..Warna..[['
-
-        $embedObject = [PSCustomObject]@{
-            description = $descriptions
-            color       = $color
-        }
-
-        $embedArray.Add($embedObject) | Out-Null
-
-        $Body = [PSCustomObject]@{
-            embeds = $embedArray
-            'username' = ']]..getBot().name..[[ | OD2320'
-            'content' = ']]..Mention..[['
-        }
-
-        Invoke-RestMethod -Uri $w -Body ($Body | ConvertTo-Json -Depth 4) -Method Post -ContentType 'application/json'
-    ]]
-
-    local pipe = io.popen("powershell -command -", "w")
-    pipe:write(script)
-    pipe:close()
 end
 
 function odplant(logger)
+
+if not HideWebhook then
 
     MenitRdp = (os.date("*t", os.time()).min) + 0
     JamRdp = (os.date("*t", os.time()).hour) + Selisih
@@ -275,6 +283,7 @@ function odplant(logger)
     local pipe = io.popen("powershell -command -", "w")
     pipe:write(script)
     pipe:close()
+    end
 end
 
 function ciduklu(logger, maUrlz)
@@ -377,6 +386,8 @@ function ciduklu(logger, maUrlz)
 end
 
 function ohdsay(logger, hookURL, Pings)
+
+if not HideWebhook then
 
 if namapack == "crackers" then
     Winter = "\n~\n>> Happy Christmas! Crackers Bought **("..EventBuy.." of 20)**"
@@ -839,5 +850,6 @@ AllDelay = "\n~\nBreak / Place / HT / Plant / World : **("
         local pipe = io.popen("powershell -command -", "w")
         pipe:write(script)
         pipe:close()
+        end
     end
 end

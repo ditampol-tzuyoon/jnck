@@ -4,6 +4,26 @@ else
     Lihatin = "Gak"
 end
 
+function StatusAktif(yoopo)
+    odv = 0
+    for _, v in pairs(getBots()) do
+        if v.status == yoopo then
+            odv = odv + 1
+        end
+    end
+    return odv
+end
+
+function SemuaGems()
+    odv = 0
+    for _, v in pairs(getBots()) do
+        if v.status == "online" then
+            odv = odv + v.gems
+        end
+    end
+    return odv
+end
+
 function ciduklu(logger, maUrlz)
 
 AllDelay = "\n~\n"..emot_bot.." "..getBot().name.." (Lv "
@@ -661,6 +681,12 @@ AllDelay = "\n~\nBreak / Place / HT / Plant / World : **("
                 value = "]]..ShowPack..[["
                 inline = "true"
             }
+            @{
+                name = ":beginner: Other Information"
+                value = "Gems : ]]..SemuaGems()..[[`nOnline/Offline : (]]..StatusAktif("online")..[[/]]..StatusAktif("offline")..[[)"
+                inline = "true"
+            }
+
         )
 
         $embedObject = [PSCustomObject]@{

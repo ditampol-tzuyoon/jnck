@@ -4,6 +4,27 @@ else
     Lihatin = "Gak"
 end
 
+
+function StatusAktif(yoopo)
+    odv = 0
+    for _, v in pairs(getBots()) do
+        if v.status == yoopo then
+            odv = odv + 1
+        end
+    end
+    return odv
+end
+
+function SemuaGems()
+    odv = 0
+    for _, v in pairs(getBots()) do
+        if v.status == "online" then
+            odv = odv + v.gems
+        end
+    end
+    return odv
+end
+
 if Jastip then
 	Gajian = true
 end
@@ -33,7 +54,7 @@ Lopar = math.random(1, #LogoPartai)
 
 function ohdtag(logger)
 
-    if not HideWebhook then
+    if not HideWebhook or ShowPingHook then
 	
         if getBot().status ~= "online" then
             if Jastip then
@@ -130,7 +151,7 @@ end
 
 function odnotice(logger)
 
-    if not HideWebhook then
+    if not HideWebhook or ShowPingHook then
 	
         if getBot().status == "online" then
             statzBot = ":green_circle:"
@@ -187,7 +208,7 @@ end
 
 function odplant(logger)
 
-if not HideWebhook then
+if not HideWebhook or ShowPlantHook then
 
     MenitRdp = (os.date("*t", os.time()).min) + 0
     JamRdp = (os.date("*t", os.time()).hour) + Selisih
@@ -508,7 +529,7 @@ AllDelay = "\n~\nBreak / Place / HT / Plant / World : **("
         end
     end
 
-    if hookURL == MainHook then
+    if hookURL == MainHook and (not HideWebhook or ShowMainInfo) then
         if HookID ~= "XXX" then
             URLWeb = hookURL.."/messages/"..HookID
             methodz = "Patch"
@@ -653,7 +674,7 @@ AllDelay = "\n~\nBreak / Place / HT / Plant / World : **("
         pipe:write(script)
         pipe:close()
 
-    elseif hookURL == WebhookSeed then
+    elseif hookURL == WebhookSeed and (not HideWebhook or ShowSeedInfo) then
         if HookIDSeed ~= "XXX" then
             URLWeb = hookURL.."/messages/"..HookIDSeed
             methodz = "Patch"
@@ -757,7 +778,7 @@ AllDelay = "\n~\nBreak / Place / HT / Plant / World : **("
         pipe:write(script)
         pipe:close()
 
-    elseif hookURL == WebhookPack then
+    elseif hookURL == WebhookPack and (not HideWebhook or ShowPackInfo) then
         if HookIDPack ~= "XXX" then
             URLWeb = hookURL.."/messages/"..HookIDPack
             methodz = "Patch"
@@ -822,6 +843,11 @@ AllDelay = "\n~\nBreak / Place / HT / Plant / World : **("
                 name = "]]..emot_pack..[[ ]]..namapack:upper()..[["
                 value = "]]..ShowPack..[["
                 inline = "true"
+            }
+            @{
+                name = ":beginner: Other Information"
+                value = "All Gems : ]]..SemuaGems()..[[`nOnline/Offline : (]]..StatusAktif("online")..[[/]]..StatusAktif("offline")..[[)"
+                inline = "false"
             }
         )
 

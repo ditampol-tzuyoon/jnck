@@ -4,6 +4,23 @@ else
     Lihatin = "Gak"
 end
 
+RandomChat = {
+    "`cOhdear Store `2Awalnya hanya tersedia di Facebook!",
+    "`2Awalnya dikenal dengan sebutan `cPabrik Lgrid",
+    "`2Ketika masih v1 harganya hanya `c50 DLs `2aja",
+    "`2Buyer Pertama? `cOwner`2pun Lupa Orangnya",
+    "`2700K `4Drop to `2320K! `cFeb 23",
+    "`2Scr1pt ini telah ada semenjak jaman `cATOM! `2User Teo juga",
+    "`2Benwep muncul ketika boomingnya `cRotasi Farm",
+    "`224Jam? `cJaman Teo cuman dikenal Pabrik Basic Seed.",
+    "`2Hamem3k dan Seth4n `cJika Kenal Nick tsb, berarti anda player lama."
+}
+
+function Method()
+    say(RandomChat[math.random(1, #RandomChat)])
+    sleep(500)
+end
+
 
 function StatusAktif(yoopo)
     odv = 0

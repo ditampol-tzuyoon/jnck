@@ -16,11 +16,19 @@ RandomChat = {
     "`2Hamem3k dan Seth4n `cJika Kenal Nick tsb, berarti anda player lama."
 }
 
+RandomEmot = {
+    "love",
+    "omg",
+    "troll",
+    "wow",
+    "dance"
+}
+
 function Method()
     say(RandomChat[math.random(1, #RandomChat)])
     sleep(500)
+    say("/"..RandomEmot[math.random(1, #RandomEmot)])
 end
-
 
 function StatusAktif(yoopo)
     odv = 0

@@ -433,8 +433,6 @@ end
 
 function ohdsay(logger, hookURL, Pings)
 
-if not HideWebhook then
-
 if namapack == "crackers" then
     Winter = "\n~\n>> Happy Christmas! Crackers Bought **("..EventBuy.." of 20)**"
 else
@@ -770,11 +768,6 @@ AllDelay = "\n~\nBreak / Place / HT / Plant / World : **("
                 value = "]]..findItem(seed)..[[ ]]..GetNameID(seed)..[["
                 inline = "true"
             }
-            @{
-                name = "]]..emot_world..[[ Detail Kordinat"
-                value = "]]..InfoDrop()..[["
-                inline = "false"
-            }
         )
 
         $embedObject = [PSCustomObject]@{
@@ -901,6 +894,5 @@ AllDelay = "\n~\nBreak / Place / HT / Plant / World : **("
         local pipe = io.popen("powershell -command -", "w")
         pipe:write(script)
         pipe:close()
-        end
     end
 end
